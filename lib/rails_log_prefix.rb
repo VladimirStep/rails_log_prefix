@@ -1,8 +1,8 @@
 require 'rails_log_prefix/version'
-require 'railties/rails/rack/logger'
+require 'rails/rack/logger'
 
 module RailsLogPrefix
-  class ExtendedLogger < Rails::Rack::Logger
+  Rails::Rack::Logger.class_eval do
     protected
 
     def call_app(request, env)
