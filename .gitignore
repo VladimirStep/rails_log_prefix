@@ -1,0 +1,19 @@
+/.bundle/
+/.yardoc
+/Gemfile.lock
+/_yardoc/
+/coverage/
+/doc/
+/pkg/
+/spec/reports/
+/tmp/
+
+# Ignore other files
+*.swp
+*~
+.project
+.DS_Store
+.idea
+.secret
+.env
+.ruby-gemset
