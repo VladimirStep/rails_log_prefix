@@ -1,4 +1,6 @@
+require 'rails_log_prefix/railtie' if defined?(Rails)
 require 'rails_log_prefix/version'
+
 require 'rails/railtie'
 require 'rails/commands'
 require 'rails/commands/commands_tasks'
@@ -43,24 +45,33 @@ require 'rails/engine/commands_tasks'
 
 module RailsLogPrefix
   class Rails::CommandsTasks
-    # alias_method :old_run, :run_command!
+    # def run_command!(command)
+    #   puts "Hello! #{command}"
+    # end
 
-    def run_command!
-      command = 'version'
-      puts "Hello! #{command}"
+    def server
+      puts "HELLO SERVER"
+    end
+
+    private
+
+    def require_command!(command)
+      puts "HELLO REQUIRE COMMAND"
+      require "rails/commands/#{command}"
     end
   end
 end
 
-module RailsLogPrefix
-  class Rails::Engine::CommandsTasks
-    alias_method :old_run, :run_command!
 
-    def run_command!(command)
-      puts "Hello! #{command}"
-    end
-  end
-end
+# module RailsLogPrefix
+#   class Rails::Engine::CommandsTasks
+#     alias_method :old_run, :run_command!
+#
+#     def run_command!(command)
+#       puts "Hello! #{command}"
+#     end
+#   end
+# end
 
 
 
