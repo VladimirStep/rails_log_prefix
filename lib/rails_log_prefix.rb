@@ -5,7 +5,16 @@ require 'rails/commands/commands_tasks'
 module RailsLogPrefix
   Rails::CommandsTasks.class_eval do
     alias_method :old_run, :run_command!
-    CUSTOM_MESSAGE = 'HELLO COMMAND'
+    CUSTOM_MESSAGE = <<DOC
+    ░░░░██▄
+    ░░░██▀░░░░▐
+    ▌░███▄░░░░▐
+    ▌▐███░▀▄███▄▄▄██▄▄
+    ▌█████▌░░▌░░░░░░▌
+    ▌▀▀▀▌▐█░░▌░░░░░░▌
+    ▌▀▀▀▌▐█░░▌░░░░░░▌
+    ▌░░░▌░█▄░▌░░░░░░▌
+DOC
 
     def run_command!(command)
       puts CUSTOM_MESSAGE
