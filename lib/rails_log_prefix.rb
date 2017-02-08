@@ -4,20 +4,35 @@ require 'rails/commands/commands_tasks'
 
 module RailsLogPrefix
   Rails::CommandsTasks.class_eval do
+
+#     DEFAULT_CUSTOM_MESSAGE = <<DOC
+#     ░░░░██▄
+#     ░░░██▀░░░░▐
+#     ▌░███▄░░░░▐
+#     ▌▐███░▀▄███▄▄▄██▄▄
+#     ▌█████▌░░▌░░░░░░▌
+#     ▌▀▀▀▌▐█░░▌░░░░░░▌
+#     ▌▀▀▀▌▐█░░▌░░░░░░▌
+#     ▌░░░▌░█▄░▌░░░░░░▌
+# DOC
+
+    DEFAULT_CUSTOM_MESSAGE = 'HELLO'
+
+    class << self
+      attr_accessor :custom_message
+    end
+
     alias_method :old_run, :run_command!
-    CUSTOM_MESSAGE = <<DOC
-    ░░░░██▄
-    ░░░██▀░░░░▐
-    ▌░███▄░░░░▐
-    ▌▐███░▀▄███▄▄▄██▄▄
-    ▌█████▌░░▌░░░░░░▌
-    ▌▀▀▀▌▐█░░▌░░░░░░▌
-    ▌▀▀▀▌▐█░░▌░░░░░░▌
-    ▌░░░▌░█▄░▌░░░░░░▌
-DOC
 
     def run_command!(command)
-      puts CUSTOM_MESSAGE
+      @custom_message ||= DEFAULT_CUSTOM_MESSAGE
+
+      p
+      p "_"*100
+      p @custom_message
+      p
+
+      puts @custom_message
       old_run(command)
     end
   end
