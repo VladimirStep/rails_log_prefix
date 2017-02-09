@@ -1,8 +1,18 @@
 # RailsLogPrefix
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/rails_log_prefix`. To experiment with that code, run `bin/console` for an interactive prompt.
+It just adds your custom message or image in console when running rails commands. For example:
 
-TODO: Delete this and the text above, and describe your gem
+    $rails s
+    
+    
+    ░░░░██▄
+    ░░░██▀░░░░▐
+    ▌░███▄░░░░▐
+    ▌▐███░▀▄███▄▄▄██▄▄
+    ▌█████▌░░▌░░░░░░▌
+    ▌▀▀▀▌▐█░░▌░░░░░░▌
+    ▌▀▀▀▌▐█░░▌░░░░░░▌
+    ▌░░░▌░█▄░▌░░░░░░▌
 
 ## Installation
 
@@ -14,16 +24,25 @@ gem 'rails_log_prefix'
 
 And then execute:
 
-    $ bundle
+    $ bundle install
 
-Or install it yourself as:
+Add this line at the end of file `config/boot` in your application:
 
-    $ gem install rails_log_prefix
+```ruby
+require 'rails_log_prefix'
+```
+
+Feel free to change value of `DEFAULT_CUSTOM_MESSAGE` in `lib/rails_log_prefix` to your needs and fun.
 
 ## Usage
 
-TODO: Write usage instructions here
+Just run your server or console as usual:
 
+    $ rails server
+or
+
+    $ rails console
+    
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
