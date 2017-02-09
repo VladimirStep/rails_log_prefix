@@ -1,4 +1,3 @@
-require 'rails_log_prefix/railtie' if defined?(Rails)
 require 'rails_log_prefix/version'
 require 'rails/commands/commands_tasks'
 
