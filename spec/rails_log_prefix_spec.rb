@@ -24,7 +24,7 @@ RSpec.describe 'CLI output' do
       p RailsLogPrefix::DEFAULT_CUSTOM_MESSAGE
 
       # RailsLogPrefix::Rails::CommandsTasks.custom_message.should eq(RailsLogPrefix::Rails::CommandsTasks::DEFAULT_CUSTOM_MESSAGE)
-      expect(process).to have_output(RailsLogPrefix::DEFAULT_CUSTOM_MESSAGE)
+      expect(process).to have_output(RailsLogPrefix::DEFAULT_CUSTOM_MESSAGE.gsub("\n", "\r\n"))
 
       # FIXME: Please extend!
 
@@ -32,18 +32,5 @@ RSpec.describe 'CLI output' do
       process.wait
     end
 
-    before { Rails::CommandsTasks.custom_message = new_message }
-    it 'should allow to set new message' do
-
-
-      p
-      p '-'*100
-      p Rails::CommandsTasks.custom_message
-
-      expect(process).to have_output(Rails::CommandsTasks.custom_message)
-
-      process.kill
-      process.wait
-    end
   end
 end
