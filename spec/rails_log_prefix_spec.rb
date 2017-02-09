@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'rails_log_prefix'
 
 RSpec.describe RailsLogPrefix do
   it 'has a version number' do
@@ -13,24 +12,33 @@ RSpec.describe 'CLI output' do
   describe 'server' do
     let(:cmd) { "#{exe} server" }
     let(:process) { CliProcess.new(cmd) }
-    let(:new_message) { 'Buy' }
 
-    # before { RailsLogPrefix.custom_message = 'Buy' }
-    # before(:each) { Rails::CommandsTasks.class_variable_set :@custom_message, Rails::CommandsTasks::DEFAULT_CUSTOM_MESSAGE }
     it 'has default custom message' do
-
-      p
-      p '='*100
-      p RailsLogPrefix::DEFAULT_CUSTOM_MESSAGE
-
-      # RailsLogPrefix::Rails::CommandsTasks.custom_message.should eq(RailsLogPrefix::Rails::CommandsTasks::DEFAULT_CUSTOM_MESSAGE)
       expect(process).to have_output(RailsLogPrefix::DEFAULT_CUSTOM_MESSAGE.gsub("\n", "\r\n"))
-
-      # FIXME: Please extend!
-
       process.kill
       process.wait
     end
+  end
 
+  describe 'console' do
+    let(:cmd) { "#{exe} console" }
+    let(:process) { CliProcess.new(cmd) }
+
+    it 'has default custom message' do
+      expect(process).to have_output(RailsLogPrefix::DEFAULT_CUSTOM_MESSAGE.gsub("\n", "\r\n"))
+      process.kill
+      process.wait
+    end
+  end
+
+  describe '--help' do
+    let(:cmd) { "#{exe} --help" }
+    let(:process) { CliProcess.new(cmd) }
+
+    it 'has default custom message' do
+      expect(process).to have_output(RailsLogPrefix::DEFAULT_CUSTOM_MESSAGE.gsub("\n", "\r\n"))
+      process.kill
+      process.wait
+    end
   end
 end
